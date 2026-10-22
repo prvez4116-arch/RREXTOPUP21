@@ -1,0 +1,29 @@
+REXTOPUP Admin Update Notes (Bengali)
+====================================
+
+এই আপডেটে বিদ্যমান ডিজাইন না বদলে Admin Control Center-এ আরও কয়েকটি কন্ট্রোল যোগ করা হয়েছে।
+
+আগে থেকে থাকা কন্ট্রোল:
+1. Theme & Colors: palette, color controls, theme preview/export.
+2. Products & Rates: product name, description, price, fallback icon, product image URL এবং package options-এর preview persistence.
+3. Banners & Notice / Website Content & Media: website logo URL, notice text, hero title/description, promo text ও banner image URL.
+4. Coin Conversion, Payment Gateway, UID API, Referral/Coupon, Automation/Inventory, Support/Chat ইত্যাদির preview/settings sections.
+
+এই আপডেটে যোগ করা হয়েছে:
+5. UI Elements: পাবলিক পেজের অনেক button, link, heading ও paragraph নির্বাচন করে display text পরিবর্তন, hide/show এবং anchor link URL পরিবর্তনের browser-preview manager.
+6. Site Settings: website name, support URL, support email (শুধু সংরক্ষিত, mail integration নয়), footer text এবং default gateway preview settings সংরক্ষণ.
+7. UI override ও site settings localStorage-এ সংরক্ষণ এবং reload-এর পর পুনরায় প্রয়োগ.
+8. URL field-এ HTTP/HTTPS validation.
+
+পরীক্ষা:
+- JavaScript syntax check (node --check): PASS.
+- HTML ID uniqueness check: PASS.
+- Full browser interaction / production hosting test: সম্পন্ন হয়নি.
+
+গুরুত্বপূর্ণ সীমাবদ্ধতা:
+- এই HTML এখনো front-end prototype. UI/content/theme/product/site settings localStorage-এ এই ব্রাউজারেই থাকে; অন্য গ্রাহক বা অন্য ডিভাইসে সিঙ্ক হয় না।
+- UI Elements manager text, visibility এবং anchor URL নিয়ন্ত্রণ করে; এটি button-এর আসল business logic, payment flow বা security rules বদলায় না।
+- কিছু dynamic/complex controls এবং backend-dependent features এই UI manager দিয়ে সম্পূর্ণভাবে configure করা যায় না।
+- Live login/register, wallet balance, order management, payment, UID lookup, automated delivery/refund, coupon/referral accounting ও support messaging-এর জন্য secure PHP/API + database integration, server-side validation, authentication/authorization এবং provider configuration লাগবে।
+- HTML-এ live API secrets রাখবেন না।
+- লাইভ সাইটে আপলোডের আগে backup নিয়ে staging environment-এ পরীক্ষা করুন।
